@@ -46,6 +46,7 @@ def test_insert_and_query(tmp_path):
 
 def test_query_with_filter(tmp_path):
     db_path = str(tmp_path / "test_db.json")
+    print(tmp_path)
     test_data = [
         {'id': '1', 'gender': 'Male'},
         {'id': '2', 'gender': 'Female'}
@@ -73,4 +74,4 @@ def test_main_cli(tmp_path, sample_csv, monkeypatch):
     # Verify database creation
     assert os.path.exists(db_path)
     db = TinyDB(db_path)
-    assert len(db) == 2
+    assert  len(db.table('Users')) == 2
